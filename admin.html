@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Post</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">ADMIN PANEL</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">View Blog</a></li>
+        </ul>
+    </nav>
+
+    <div
+        style="max-width: 600px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Add New Post</h2>
+
+        <form id="postForm">
+
+            <label style="font-weight: bold;">Title:</label>
+            <input type="text" id="postTitle" placeholder="Post Title" required
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+            <label style="font-weight: bold;">Date:</label>
+            <input type="date" id="postDate" required
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+            <label style="font-weight: bold;">Image:</label>
+            <input type="file" id="postImage" accept="image/*" required
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+            <label style="font-weight: bold;">Content:</label>
+            <textarea id="postContent" rows="5" placeholder="Write something..." required
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+
+            <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Publish Post</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('postForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // පිටුව Refresh වෙන එක නවත්වනවා
+
+            // දත්ත ටික ගන්නවා
+            const title = document.getElementById('postTitle').value;
+            const date = document.getElementById('postDate').value;
+            const content = document.getElementById('postContent').value;
+            const imageFile = document.getElementById('postImage').files[0];
+
+            // Image එක කියවන්න (Base64 වලට හරවන්න)
+            const reader = new FileReader();
+            reader.readAsDataURL(imageFile);
+
+            reader.onload = function () {
+                const imageData = reader.result; // පින්තූරේ කෝඩ් එක
+
+                // පරණ Posts ටික ගන්නවා (නැත්නම් අලුත් ලිස්ට් එකක් හදනවා)
+                const blogPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+                // අලුත් Post එක ඔබ්ජෙක්ට් එකක් විදියට හදනවා
+                const newPost = {
+                    title: title,
+                    date: date,
+                    content: content,
+                    image: imageData
+                };
+
+                // අලුත් Post එක ලිස්ට් එකේ මුලටම දානවා
+                blogPosts.unshift(newPost);
+
+                // ආයේ Save කරනවා
+                localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+
+                alert('Post added successfully!');
+                form.reset(); // Form එක හිස් කරනවා
+                window.location.href = "blog.html"; // කෙලින්ම Blog එකට යනවා
+            };
+        });
+    </script>
+
+</body>
+
+</html>

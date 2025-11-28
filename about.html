@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">MY PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" style="color:#00d2ff;">About</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <span class="mode-text">Dark Mode</span>
+        </div>
+    </nav>
+
+    <section class="about">
+        <div class="about-img">
+            <img src="my about.png" alt="About Me Image">
+        </div>
+
+        <div class="about-content">
+            <h2>මම <span class="highlight">ගැන</span></h2>
+            <p>
+                "Hello, I'm Janiru Hansaga, I'm a tech enthusiast and creative developer. My passion lies at the
+                intersection of web development and artificial intelligence. I build custom LMS solutions (using Moodle
+                and WordPress) and develop dynamic web applications with PHP and Node.js.
+                Beyond coding, I'm a digital designer exploring the boundaries of AI. From producing AI-generated rap
+                music to creating characters like 'Blackpanth AI', I love using technology. I'm constantly experimenting
+                with new tools to blend logic with creativity."
+            </p>
+
+            <a href="https://www.facebook.com/janiruofficial" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <script>
+        const toggleSwitch = document.querySelector('#checkbox');
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
+
+</body>
+
+</html>

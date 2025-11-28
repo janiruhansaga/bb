@@ -1,0 +1,982 @@
+/* =========================================
+   1. CSS VARIABLES & THEME SETUP
+   ========================================= */
+:root {
+    /* --- පාටවල් (Colors) --- */
+    --primary-color: #00d2ff;
+    /* ප්‍රධාන නිල් පාට */
+    --logo-color: #ff4500;
+    /* Logo එකේ පාට (තැඹිලි) */
+    --name-color: #00d2ff;
+    /* නමේ පාට (නිල්) */
+
+    /* Light Mode (Default) */
+    --bg-color: #f8f9fa;
+    --text-color: #333333;
+    --nav-bg: #ffffff;
+    --sub-text: #555555;
+    --border-color: #ddd;
+    --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-bg: #252525;
+    --sub-text: #cccccc;
+    --border-color: #444;
+    --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. NAVIGATION BAR
+   ========================================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--nav-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--logo-color);
+    /* ලෝගෝ එකට වෙනම පාටක් */
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   3. HERO SECTION (HOME)
+   ========================================= */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.hero h3 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: var(--sub-text);
+}
+
+.hero p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: var(--text-color);
+    text-justify: right;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--primary-color);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: center
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 400px;
+    border-radius: 10%;
+    border: 0px solid var(--primary-color);
+}
+
+/* Typing Effect (Name Only) */
+.typing {
+    color: var(--name-color);
+    /* නමට වෙනම පාටක් */
+    border-right: 3px solid var(--name-color);
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        border-color: var(--name-color);
+    }
+
+    50% {
+        border-color: transparent;
+    }
+
+    100% {
+        border-color: var(--name-color);
+    }
+}
+
+/* =========================================
+4. EDUCATION SECTION (Light Theme Updated)=========================================*/
+.education-section {
+    background-color: var(--bg-color);
+    /* කළු (#000) අයින් කරලා Variable දැම්මා */
+    padding: 80px 10%;
+    border-top: 1px solid var(--border-color);
+}
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    /* සුදු (#fff) අයින් කරලා Variable දැම්මා */
+    text-align: center;
+}
+
+.edu-container {
+    display: grid;
+    /* 300px තිබ්බ එක 250px වගේ කළොත් කාඩ් එක තව පොඩි වෙයි */
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.edu-box {
+    background-color: var(--nav-bg);
+    /* බොක්ස් එකේ පාට Variable කළා */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+    /* සුදු පසුබිමේ පේන්න Shadow දැම්මා */
+}
+
+.edu-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+/* Image Box එකේ උස අඩු කිරීම */
+.edu-img {
+    width: 100%;
+    height: 150px;
+    /* කලින් 200px තිබ්බ එක 150px කළා */
+    overflow: hidden;
+    background-color: #ffffff;
+    /* ලෝගෝ එක පේන්න සුදු පසුබිමක් */
+    border-bottom: 1px solid #eee;
+    /* යටින් පොඩි ඉරක් */
+}
+
+/* ලෝගෝ එක කපන්නේ නැතුව පෙන්නීම */
+.edu-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* මේකෙන් තමයි ලෝගෝ එක සම්පූර්ණයෙන්ම පෙන්නන්නේ */
+    padding: 15px;
+    /* ලෝගෝ එක වටේට පොඩි ඉඩක් තියන්න */
+    transition: 0.5s;
+}
+
+.edu-box:hover .edu-img img {
+    transform: scale(1.1);
+}
+
+.edu-content {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.edu-date {
+    background-color: var(--primary-color);
+    color: #fff;
+    /* Date එකේ අකුරු සුදු පාටයි */
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.edu-content h3 {
+    font-size: 22px;
+    color: var(--text-color);
+    /* මාතෘකාව කළු පාටට (Theme එක අනුව) */
+    margin-bottom: 15px;
+}
+
+.edu-content p {
+    font-size: 14px;
+    color: var(--sub-text);
+    /* විස්තරය අළු පාටට */
+    line-height: 1.6;
+}
+
+/* =========================================
+5. STATS SECTION (Light Theme Updated)=========================================*/
+.stats-section {
+    background-color: var(--bg-color);
+    /* කළු පාට අයින් කළා */
+    padding: 60px 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-box {
+    text-align: center;
+    margin: 20px;
+    background: var(--nav-bg);
+    /* බොක්ස් එකේ පාට Variable කළා */
+    padding: 30px;
+    width: 220px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    /* Shadow එකක් දැම්මා */
+    transition: 0.3s;
+}
+
+.stat-box:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.stat-box h2 {
+    font-size: 45px;
+    color: var(--text-color);
+    /* අංක වල පාට කළු (Theme එක අනුව) */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.stat-box p {
+    color: var(--primary-color);
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* =========================================
+   6. ABOUT PAGE STYLES
+   ========================================= */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 50px;
+    background-color: var(--nav-bg);
+    transition: 0.3s;
+}
+
+.about-img {
+    flex: 1;
+    text-align: center;
+}
+
+.about-img img {
+    display: block;
+    margin: 0 auto;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+.about-content {
+    flex: 1;
+    padding-left: 50px;
+}
+
+.about-content h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.about-content h3 {
+    font-size: 22px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--sub-text);
+}
+
+.info-box {
+    margin-bottom: 30px;
+}
+
+.info-box p {
+    margin-bottom: 10px;
+    font-size: 17px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.info-box strong {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.email-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.email-link:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   7. SERVICES SECTION
+   ========================================= */
+.full-width-background {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffe5e5, #dceeff);
+    display: flex;
+    justify-content: center;
+    padding: 80px 0;
+    transition: 0.3s;
+}
+
+body.dark-mode .full-width-background {
+    background: linear-gradient(to bottom, #2c0000, #001a33);
+}
+
+.services-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-box {
+    background-color: var(--nav-bg);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent;
+    text-align: center;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.icon {
+    font-size: 45px;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    background-color: rgba(0, 210, 255, 0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   8. BLOG SECTION (Mr. Sci-Fi Style)
+   ========================================= */
+.blog-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #000;
+    /* කළු පාට Header */
+    color: #fff;
+}
+
+.blog-header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.blog-header p {
+    color: #aaa;
+}
+
+.blog-section {
+    padding: 50px 5%;
+    background-color: #000;
+    /* කළු පාට Body */
+    min-height: 80vh;
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.blog-box {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 210, 255, 0.1);
+}
+
+.blog-img {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.blog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.blog-box:hover .blog-img img {
+    transform: scale(1.1);
+}
+
+.blog-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-content .date {
+    font-size: 12px;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.blog-content h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.blog-content p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.blog-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.read-more {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.read-more:hover {
+    color: var(--primary-color);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   9. MODAL (POPUP) STYLES
+   ========================================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--nav-bg);
+    color: var(--text-color);
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    width: 80%;
+    max-width: 800px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+}
+
+#modalImg {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #000;
+}
+
+#modalTitle {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#modalDate {
+    color: var(--primary-color);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#modalText {
+    font-size: 16px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+/* =========================================
+   10. DARK MODE TOGGLE SWITCH
+   ========================================= */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.mode-text {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .about {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .about-content {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .blog-container,
+    .edu-container,
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-section {
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   AI CHARACTER SECTION STYLES (CSS)
+   ========================================= */
+.ai-section {
+    background-color: var(--nav-bg);
+    /* පසුබිම (Light/Dark mode අනුව මාරු වේ) */
+    padding: 100px 10%;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ai-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   AI CHARACTER COLLAGE STYLES (FINAL FIXED)
+   ========================================= */
+
+.ai-section {
+    background-color: var(--nav-bg);
+    padding: 100px 10%;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    /* පින්තූර එලියට පනින එක නවත්වන්න */
+}
+
+.ai-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Image Box (Desktop) --- */
+.ai-image-box {
+    flex: 1;
+    position: relative;
+    height: 500px;
+/* මෙන්න මේ පේළිය එකතු කරන්න */
+    /* -80px දැම්මම සෑහෙන වමට යනවා. ඔයාට ඕන තරමට මේ අංකය වෙනස් කරන්න */
+    transform: translateX(-100px);
+}
+/* Image Common Styles */
+.ai-image-box img {
+    position: absolute;
+    border-radius: 15px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+    transition: 0.3s;
+    object-fit: cover;
+}
+
+.ai-image-box img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 50px rgba(0, 210, 255, 0.4);
+    z-index: 10;
+}
+
+/* --- Desktop Positions (වම් පැත්තට බරව) --- */
+
+.ai-img-main {
+    width: 350px;
+    height: 450px;
+    top: 0;
+    left: -20px;
+    /* ඩෙස්ක්ටොප් එකේ වම් පැත්තට */
+    z-index: 3;
+}
+
+.ai-img-secondary {
+    width: 300px;
+    height: 400px;
+    top: 60px;
+    left: 180px;
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.ai-img-small {
+    width: 200px;
+    height: 250px;
+    top: -30px;
+    left: 320px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+/* Text Box */
+.ai-content-box {
+    flex: 1;
+}
+
+.ai-content-box h2 {
+    font-size: 40px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.ai-content-box h3 {
+    font-size: 22px;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.ai-content-box p {
+    font-size: 16px;
+    color: var(--sub-text);
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE FIXES (UPDATED FOR CLEAR LAYOUT)
+   ========================================= */
+@media (max-width: 1150px) {
+    
+    /* --- වෙනත් කොටස් වලට අදාල කෝඩ් (Nav, Hero etc.) මෙතන උඩින් තියෙන්න පුළුවන් --- */
+    /* ... (Nav, Hero කෝඩ්ස් මෙතන තියන්න) ... */
+
+
+    /* --- AI SECTION MOBILE FIX (පින්තූරය උඩින්, විස්තරය යටින්) --- */
+    
+    .ai-section {
+        padding: 60px 20px;
+        overflow: visible; /* පින්තූර කැපෙන එක නවත්වන්න */
+    }
+
+    .ai-container {
+        flex-direction: column; /* පේළියට නැතුව එකක් යට එකක් */
+        gap: 40px; /* පින්තූර සහ විස්තර අතර පරතරය */
+    }
+
+    /* 1. පින්තූර පෙට්ටිය (Image Box) */
+    .ai-image-box {
+        width: 100%;
+        height: auto; /* ෆික්ස් උස අයින් කළා. පින්තූර වලට අනුව උස හැදෙයි. */
+        margin-bottom: 0;
+        position: relative;
+        display: flex;
+        justify-content: center; /* පින්තූර මැදට ගන්න */
+        min-height: 400px; /* පින්තූර ලෝඩ් වෙනකම් පොඩි ඉඩක් තියන්න */
+    }
+
+    /* 2. ප්‍රධාන පින්තූරය (Main Image) - සාමාන්‍ය විදියට තියන්න */
+    .ai-img-main {
+        position: relative; /* absolute අයින් කළා */
+        width: 80%; /* ෆෝන් එකේ පළලින් 80% ක් */
+        max-width: 350px;
+        height: auto;
+        left: auto;
+        top: auto;
+        transform: none; /* මැදට ගන්න දාපු ඒවා අයින් කළා */
+        z-index: 1;
+    }
+
+    /* 3. දෙවැනි පින්තූරය (Secondary) - මේක ප්‍රධාන එක උඩින් තියන්න */
+    .ai-img-secondary {
+        /* මේක absolute කරලා තියනවා ලේයර් එකක් වගේ පේන්න */
+        width: 60%;
+        max-width: 280px;
+        height: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-30%, -30%); /* ප්‍රධාන එකට වඩා චුට්ටක් එහා මෙහා කළා */
+        z-index: 2;
+    }
+
+    /* 4. අකුරු කොටස (Content Box) */
+    .ai-content-box {
+        text-align: left; /* Example එකේ වගේ වම් පැත්තට */
+        margin-top: 0;
+        padding: 0 10px; /* දෙපැත්තෙන් පොඩි ඉඩක් */
+    }
+
+    /* මාතෘකා වල සයිස් පොඩ්ඩක් අඩු කළා ෆෝන් එකට */
+    .ai-content-box h2 {
+        font-size: 32px;
+    }
+    .ai-content-box h3 {
+        font-size: 20px;
+    }
+    
+    /* --- අනිත් Grid කොටස් --- */
+    .edu-container, 
+    .blog-container, 
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    .stats-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

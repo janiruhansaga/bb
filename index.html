@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janiru Hansaga | Home</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">MY PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="index.html" style="color:#00d2ff;">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <span class="mode-text">Dark Mode</span>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>හායි, මම <span class="typing"></span></h1>
+            <p>A designer who loves to create new things by combining lines of code and artistic concepts.
+
+                My world is built between technology and art. On one hand, I find technical solutions to problems by
+                creating web applications and software. On the other hand, I explore my creativity by bringing digital
+                characters like 'Black Panther' to life and expressing my ideas through them.
+
+                This is my digital canvas. I invite you to explore my world through my projects!</p>
+            <a href="https://janiru.online/" class="btn">මෙවලම්</a>
+        </div>
+        <div class="hero-image">
+            <img src="Gemini_Generated_Image_fveqx9fveqx9fveq.png" alt="My Photo">
+        </div>
+    </header>
+    <section class="ai-section">
+        <div class="ai-container">
+            <<div class="ai-image-box">
+                <div class="ai-collage">
+                    <img src="panther1.jpeg" alt="AI Character Main" class="ai-img-main">
+
+                    <img src="panther2.jpeg" alt="AI Character Secondary" class="ai-img-secondary">
+
+                    <img src="panther3.png" alt="AI Character Small" class="ai-img-small">
+                </div>
+        </div>
+
+        <div class="ai-content-box">
+            <h2>Meet My <span class="highlight">AI character</span></h2>
+            <h3>Blackpanth AI</h3>
+            <p>
+                More than just an avatar, BlackPanther is an experiment in digital identity. Powered by advanced machine
+                learning algorithms, this character allows me to explore the frontiers of digital art and media. It
+                stands as a symbol of innovation, showcasing how we can use technology to create unique, immersive
+                experiences in the web and music space.
+            </p>
+            <a href="blog.html" class="btn">See How It Was Created</a>
+        </div>
+        </div>
+    </section>
+
+    <section class="education-section" id="education">
+        <h2 class="section-title">My <span class="highlight">Education</span></h2>
+
+        <div class="edu-container">
+
+            <div class="edu-box">
+                <div class="edu-img">
+                    <img src="images.jpg" alt="School Image">
+                </div>
+                <div class="edu-content">
+                    <span class="edu-date">2012-2018</span>
+                    <h3> ධර්මාශෝක විද්‍යාලය මහරගම</h3>
+                    <p> 1 ශ්‍රේණියේ සිට 5 ශ්‍රේණිය දක්වා ඉගෙනුම ලැබුවේ ධර්මාශෝක විද්‍යාලයෙන් </p>
+                </div>
+            </div>
+
+            <div class="edu-box">
+                <div class="edu-img">
+                    <img src="President's_College_Maharagama_Crest.png" alt="School Image">
+                </div>
+                <div class="edu-content">
+                    <span class="edu-date">2019-2025</span>
+                    <h3>ජනධිපති විද්‍යාලය මහරගම</h3>
+                    <p>6ශ්‍රේණියේ සිට 11ශ්‍රේණිය දක්වා ඉගෙනුම ලැබුවේ මහරගම ජනාධිපති විද්‍යාලයෙනි</p>
+                </div>
+            </div>
+
+            <div class="edu-box">
+                <div class="edu-img">
+                    <img src="Crest_of_Nalanda_College.png" alt="School Image">
+                </div>
+                <div class="edu-content">
+                    <span class="edu-date">2025-presant</span>
+                    <h3> නාලන්දා විද්‍යාලය කොළඹ 10</h3>
+                    <p>දැනට උසස් පෙළ වාණිජ අංශයෙන් හදාරමින් සිටිමි.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script>
+        // Dark Mode
+        const toggleSwitch = document.querySelector('#checkbox');
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        if (toggleSwitch) {
+            toggleSwitch.addEventListener('change', switchTheme, false);
+        }
+
+        // Typing Effect
+        const text = " ජනිරු හංසග පෙරේරා";
+        const typingElement = document.querySelector(".typing");
+        let index = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            typingElement.textContent = text.substring(0, index);
+            let speed = 100;
+            if (isDeleting) { index--; speed = 50; } else { index++; }
+            if (!isDeleting && index === text.length + 1) { isDeleting = true; speed = 2000; }
+            else if (isDeleting && index === 0) { isDeleting = false; speed = 500; }
+            setTimeout(typeEffect, speed);
+        }
+        window.onload = typeEffect;
+    </script>
+</body>
+
+</html>

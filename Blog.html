@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        nav {
+            background-color: #000 !important;
+            /* පසුබිම කළු */
+            border-bottom: 1px solid #333;
+            /* යටින් පොඩි අළු පාට ඉරක් */
+        }
+
+        /* මෙනු ලින්ක් වල අකුරු සුදු පාට කිරීම */
+        .nav-links a {
+            color: #fff !important;
+        }
+
+        /* මවුස් එක තිබ්බම නිල් පාට වෙන්න */
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00d2ff !important;
+        }
+
+        /* Dark Mode කියන වචනෙ සුදු පාට කිරීම */
+        .mode-text {
+            color: #fff !important;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">MY PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html" style="color:#00d2ff;">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <span class="mode-text">Dark Mode</span>
+        </div>
+    </nav>
+
+    <section class="blog-header">
+        <h1>Latest <span class="highlight">Updates</span></h1>
+        <p>Tech news, coding tutorials, and my personal experiences.</p>
+    </section>
+
+    <section class="blog-section">
+        <div class="blog-container" id="blogContainer">
+        </div>
+    </section>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="">
+            <h2 id="modalTitle"></h2>
+            <span id="modalDate" class="date"></span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script>
+        // 1. Dark Mode
+        const toggleSwitch = document.querySelector('#checkbox');
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        if (toggleSwitch) {
+            toggleSwitch.addEventListener('change', switchTheme, false);
+        }
+
+        // 2. Load Blog Posts
+        const blogContainer = document.getElementById('blogContainer');
+
+        function loadPosts() {
+            const storedPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+            if (storedPosts.length === 0) {
+                blogContainer.innerHTML = "<p style='color:#fff; text-align:center; grid-column: 1/-1;'>No posts yet. Go to <a href='admin.html' style='color:#00d2ff'>Admin Panel</a> to add one.</p>";
+            } else {
+                blogContainer.innerHTML = "";
+
+                storedPosts.forEach((post, index) => {
+                    // වචන 100කට සීමා කිරීම
+                    let shortContent = post.content;
+                    if (shortContent.length > 100) {
+                        shortContent = shortContent.substring(0, 100) + "...";
+                    }
+
+                    // HTML Structure (අර Reference එකේ වගේ)
+                    const postHTML = `
+                        <div class="blog-box">
+                            <div class="blog-img">
+                                <img src="${post.image}" alt="Blog Image">
+                            </div>
+                            <div class="blog-content">
+                                <span class="date">${post.date}</span>
+                                <h3>${post.title}</h3>
+                                <p>${shortContent}</p>
+                                
+                                <div class="blog-actions">
+                                    <a href="#" onclick="openModal(${index})" class="read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                                    
+                                    <button onclick="deletePost(${index})" class="delete-btn">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    blogContainer.innerHTML += postHTML;
+                });
+            }
+        }
+
+        // 3. Delete Post
+        function deletePost(index) {
+            if (confirm("Are you sure you want to delete this post?")) {
+                let posts = JSON.parse(localStorage.getItem('blogPosts'));
+                posts.splice(index, 1);
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                loadPosts();
+            }
+        }
+
+        // 4. Modal Logic
+        function openModal(index) {
+            let posts = JSON.parse(localStorage.getItem('blogPosts'));
+            let post = posts[index];
+
+            document.getElementById('modalImg').src = post.image;
+            document.getElementById('modalTitle').innerText = post.title;
+            document.getElementById('modalDate').innerText = post.date;
+            document.getElementById('modalText').innerText = post.content;
+
+            document.getElementById('postModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            let modal = document.getElementById('postModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Initial Load
+        loadPosts();
+    </script>
+
+</body>
+
+</html>
